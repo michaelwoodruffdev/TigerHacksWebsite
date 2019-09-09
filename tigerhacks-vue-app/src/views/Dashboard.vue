@@ -1,49 +1,64 @@
 <template>
   <div class="dashboard-div">
-    
-    <v-card 
-      class="text-center landing-card"
-      dark="true">
-      
-      <img src="../assets/tiger_big.png" alt="">
+    <a href="http://www.mlh.io" class="mlh-badge-link">
+      <img src="../assets/mlh-trust-badge-2020-gray.svg" alt class="mlh-badge" />
+    </a>
 
-      <v-card-title class="card-title justify-center"><span>Tiger</span>Hacks</v-card-title>
-        
-      <v-btn large="true" color="#f79845" class="mt-6" height="60">Register / Sign in</v-btn>
+    <transition name="from-left">
+      <side-navbar v-if="isDashboardOpen"></side-navbar>
+    </transition>
 
-      <v-card-actions class="justify-center link-row mt-3">
-          <v-btn>
-            <v-icon>mdi-email</v-icon>
-          </v-btn>
-          <v-btn>
-            <v-icon>mdi-twitter</v-icon>
-          </v-btn>
-          <v-btn>
-            <v-icon>mdi-facebook</v-icon>
-          </v-btn>
-          <v-btn>
-            <v-icon>mdi-instagram</v-icon>
-          </v-btn>
-      </v-card-actions>
-    </v-card>
+    <transition name="fade">
+      <landing-card v-if="!isDashboardOpen"></landing-card>
+    </transition>
 
+    <transition name="from-right">
+      <bottom-navbar v-if="isDashboardOpen"></bottom-navbar>
+    </transition>
+
+    <v-btn @click="openDashboard()" class="palette-button" v-if="!isDashboardOpen">
+      <v-icon>mdi-help</v-icon>
+    </v-btn>
+
+    <transition name="from-bottom">
+      <div class="viewport" v-if="isDashboardOpen">hello world</div>
+    </transition>
   </div>
 </template>
 
 <script>
+import LandingCard from "../components/LandingCard.vue";
+import SideNavbar from "../components/SideNavbar.vue";
+import BottomNavbar from "../components/BottomNavbar.vue";
 
 export default {
-  name: 'Dashboard'
+  name: "Dashboard",
+  components: {
+    LandingCard,
+    SideNavbar,
+    BottomNavbar
+  },
+  data() {
+    return {
+      isDashboardOpen: false,
+      isMobile: false
+    };
+  },
+  methods: {
+    openDashboard() {
+      this.isDashboardOpen = true;
+    },
+    closeDashboard() {
+      this.isDashboardOpen = false;
+    }
+  }
 };
 </script>
 
 <style>
-
 </style>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
-
 .dashboard-div {
   width: 100vw;
   height: 100vh;
@@ -51,26 +66,69 @@ export default {
   background-repeat: repeat;
 }
 
-.landing-card {
-  margin: auto;
-  margin-top: 40px;
-  width: 80vw;
-  max-width: 460px;
-  padding: 30px;
+.mlh-badge {
+  height: 175px;
+  position: fixed;
+  top: 0;
+  right: 30px;
+  z-index: 3;
 }
 
-.landing-card > img {
-  width: 80%;
+.palette-button {
+  height: 200px;
+  width: 200px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
-.card-title {
-  font-size: 4rem;
-  font-family: 'Josefin Sans';
-  text-align: center;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .7s ease;
 }
 
-.card-title>span {
-  color: orange;
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+
+.from-left-enter-active, .from-right-enter-active {
+  transition: transform .7s ease;
+}
+
+.from-left-enter {
+  transform: translateX(-100px);
+}
+
+.from-right-enter {
+  transform: translateX(100vw);
+}
+
+.from-left-enter-to, .from-right-enter-to {
+  transform: translateX(0px);
+}
+
+.from-bottom-enter-active {
+  transition: transform .7s ease .7s;
+}
+
+.from-bottom-enter {
+  transform: translateY(100vh);
+}
+
+.from-bottom-enter-to {
+  transform: translateY(0);
+}
+
+.viewport {
+  height: 100vh;
+  background-color: blue;
+  position: relative;
+  z-index: 2;
+}
 </style>

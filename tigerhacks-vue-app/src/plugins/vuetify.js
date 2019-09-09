@@ -15,9 +15,14 @@ Vue.use(Vuetify, {
   directives: {
     Ripple
   }, 
+  defaultAssets: {
+    font: true, 
+    icons: 'mdi'
+  }, 
   icons: {
     iconfont: 'mdi', 
     values: {
+      info: "mdi-about", 
       product: 'mdi-dropbox',
       support: 'mdi-lifebuoy',
       steam: 'mdi-steam-box',
