@@ -1,5 +1,5 @@
 <template>
-  <v-card class="text-center landing-card" :dark="true">
+  <v-card class="text-center landing-card">
     <img src="../assets/tiger_big.png" alt />
 
     <v-card-title class="card-title justify-center">
@@ -45,6 +45,15 @@ export default {
   max-width: 460px;
   padding: 30px;
   opacity: .95;
+  position: relative;
+  bottom: 0;
+  transition: bottom 1s ease, max-width 1s ease, width 1s ease;
+}
+
+.landing-card:hover {
+  bottom: 12px;
+  max-width: 470px;
+  width: 84vw;
 }
 
 .landing-card:hover {

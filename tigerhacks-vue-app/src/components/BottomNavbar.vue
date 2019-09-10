@@ -1,7 +1,7 @@
 <template>
   <div class="bottom-navbar">
-    <v-bottom-navigation :v-model="true" class="bottom-navbar" height="70">
-      <v-btn v-for="link in links" :key="link.title">
+    <v-bottom-navigation :v-model="true" class="bottom-navbar" height="10vh">
+      <v-btn v-for="link in links" :key="link.title" @click="switchRoute(link.link)">
         <span>{{ link.title }}</span>
         <v-icon>{{ link.icon }}</v-icon>
       </v-btn>
@@ -12,30 +12,41 @@
 <script>
 export default {
   name: "BottomNavbar",
+  methods: {
+    switchRoute(link) {
+      this.$router.push(link);
+    }
+  }, 
   data() {
     return {
       links: [
         {
+          link: 'about', 
           icon: "mdi-help",
           title: "About"
         },
         {
+          link: 'schedule', 
           icon: "mdi-calendar",
           title: "Schedule"
         },
         {
+          link: 'prizes', 
           icon: "mdi-trophy",
           title: "Prizes"
         },
         {
+          link: 'tigertalks', 
           icon: "mdi-chat",
           title: "TigerTalks"
         },
         {
+          link: 'sponsors', 
           icon: "mdi-star",
           title: "Sponsors"
         },
         {
+          link: 'profile', 
           icon: "mdi-account",
           title: "Profile"
         }

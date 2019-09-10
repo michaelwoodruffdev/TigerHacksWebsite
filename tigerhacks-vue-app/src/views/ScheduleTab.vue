@@ -1,0 +1,258 @@
+<template>
+  <div class="schedule-tab">
+    <h1>Schedule</h1>
+    <v-expansion-panels popout multiple>
+      <v-expansion-panel v-for="(value, name) in days" :key="name">
+        <v-expansion-panel-header :ref="name">
+          <h2>{{ name }}</h2>
+        </v-expansion-panel-header>
+        <!-- <transition-group name="padding"> -->
+        <v-expansion-panel-content>
+          <div class="event-content" v-for="event in value" :key="event.title">
+            <h4>{{ event.time }}</h4>
+            <h3>{{ event.title }}</h3>
+            <h5>@ {{ event.location }}</h5>
+            <v-btn class="favorite-button" small fab>
+              <v-icon>mdi-star</v-icon>
+            </v-btn>
+          </div>
+        </v-expansion-panel-content>
+        <!-- </transition-group> -->
+      </v-expansion-panel>
+    </v-expansion-panels>
+  </div>
+</template>
+
+<script>
+import Vue from "vue";
+
+export default {
+  name: "ScheduleTab",
+  mounted() {
+    let date = new Date().toLocaleDateString();
+    console.log(date);
+    switch (date) {
+      case "11/8/2019":
+        this.$refs.Friday[0].$el.click();
+        break;
+      case "11/9/2019":
+        this.$refs.Saturday[0].$el.click();
+        break;
+      case "11/10/2019":
+        this.$refs.Sunday[0].$el.click();
+        break;
+      case "9/10/2019":
+        this.$refs.Sunday[0].$el.click();
+        break;
+      default:
+        // this.$refs.Friday[0].$el.click();
+        break;
+    }
+  },
+  data() {
+    return {
+      isFridayOpen: false,
+      isSaturdayOpen: false,
+      isSundayOpen: false,
+      days: {
+        Friday: [
+          {
+            time: "5:00 PM",
+            title: "Check-in Begins",
+            location: "Main Hallway"
+          },
+          {
+            time: "6:00 PM",
+            title: "Opening Ceremony",
+            location: "Geological Sciences or Naka Auditorium"
+          },
+          {
+            time: "6:30 PM",
+            title: "Dinner",
+            location: "Lafferre Time Capsule"
+          },
+          {
+            time: "7:30 PM",
+            title: "Team Building",
+            location: "Room W1004"
+          },
+          {
+            time: "8:00 PM",
+            title: "Scavenger Hunt",
+            location: "Lafferre"
+          },
+          {
+            time: "9:00 PM",
+            title: "Tech Talk",
+            location: "Ketcham or Room E1419"
+          },
+          {
+            time: "11:00 PM",
+            title: "Laser Tag / Nerf War",
+            location: "The Quad"
+          }
+        ],
+        Saturday: [
+          {
+            time: "12:00 AM",
+            title: "Midnight Snack",
+            location: "Time Capsule"
+          },
+          {
+            time: "8:00 AM",
+            title: "Breakfast",
+            location: "Time Capsule"
+          },
+          {
+            time: "10:00 AM",
+            title: "Animals",
+            location: "Francis Quadrangle"
+          },
+          {
+            time: "12:00 PM",
+            title: "Lunch",
+            location: "Time Capsule"
+          },
+          {
+            time: "1:00 PM",
+            title: "Tech Talk",
+            location: "Ketcham or Room E1419"
+          },
+          {
+            time: "2:00 PM",
+            title: "Video Games",
+            location: "TBD"
+          },
+          {
+            time: "5:00 PM",
+            title: "Tech Talk",
+            location: "Ketcham or Room E1419"
+          },
+          {
+            time: "7:00 PM",
+            title: "Dinner",
+            location: "Time Capsule"
+          },
+          {
+            time: "8:00 PM",
+            title: "MLH Activity",
+            location: "TBD"
+          },
+          {
+            time: "9:00 PM",
+            title: "Beat Shazam",
+            location: "Classroom"
+          },
+          {
+            time: "9:00 PM",
+            title: "Crafts",
+            location: "Cafe or Classroom"
+          },
+          {
+            time: "10:00 PM",
+            title: "Movies",
+            location: "Ketcham"
+          }
+        ],
+        Sunday: [
+          {
+            time: "12:00 AM",
+            title: "Midnight Snack",
+            location: "Time Capsule"
+          },
+          {
+            time: "8:00 AM",
+            title: "Breakfast",
+            location: "Time Capsule"
+          },
+          {
+            time: "10:30 AM",
+            title: "Submissions Due",
+            location: ""
+          },
+          {
+            time: "11:00 AM",
+            title: "Lunch",
+            location: "Time Capsule"
+          },
+          {
+            time: "11:30 AM",
+            title: "How To Demo",
+            location: "Ketcham or Room E1419"
+          },
+          {
+            time: "12:00 PM",
+            title: "Judging Begins",
+            location: "Hallways"
+          },
+          {
+            time: "2:00 PM",
+            title: "Closing Ceremony",
+            location: "Keller or Naka"
+          }
+        ]
+      }
+    };
+  }
+};
+</script>
+
+<style scoped>
+.schedule-tab {
+  padding: 20px 0vw;
+}
+
+h1,
+h2 {
+  /* text-shadow: 2px 2px black; */
+}
+
+h3 {
+  color: orange !important;
+}
+
+.event-content {
+  background-color: #22222222;
+  border-top: 1px solid #22222288;
+  border-left: 2px solid orange;
+  border-radius: 5px 0 0 5px;
+  position: relative;
+  padding: 8px 20px;
+  transition: background-color 0.2s ease;
+}
+
+.event-content:nth-child(2n) {
+  background-color: #22222200;
+}
+
+.event-content:hover {
+  background-color: #22222255;
+}
+
+.event-content:hover > .favorite-button {
+  opacity: 1;
+}
+
+.padding-enter-active,
+.padding-leave-active {
+  transition: padding 0.2s ease;
+}
+
+.padding-enter,
+.padding-leave-to {
+  padding: 0;
+}
+
+.padding-leave,
+.padding-enter-to {
+  padding: 25px;
+}
+
+.favorite-button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+</style>

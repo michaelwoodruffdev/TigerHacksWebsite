@@ -21,7 +21,9 @@
     </v-btn>
 
     <transition name="from-bottom">
-      <div class="viewport" v-if="isDashboardOpen">hello world</div>
+      <div class="viewport" v-if="isDashboardOpen">
+        <router-view></router-view>
+      </div>
     </transition>
   </div>
 </template>
@@ -51,6 +53,13 @@ export default {
     closeDashboard() {
       this.isDashboardOpen = false;
     }
+  }, 
+  mounted() {
+    // fetch('https://tigerhacks.com/api/schedule')
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     console.log(res);
+    //   });
   }
 };
 </script>
@@ -126,9 +135,11 @@ export default {
 }
 
 .viewport {
-  height: 100vh;
-  background-color: blue;
+  padding: 40px 80px;
+  background-color: #22222266;
   position: relative;
   z-index: 2;
+  height: 90vh;
+  overflow: scroll;
 }
 </style>
