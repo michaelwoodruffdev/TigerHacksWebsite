@@ -1,8 +1,8 @@
 <template>
   <div class="schedule-tab">
     <h1>Schedule</h1>
-    <v-expansion-panels popout multiple>
-      <v-expansion-panel v-for="(value, name) in days" :key="name">
+    <v-expansion-panels popout>
+      <v-expansion-panel v-for="(value, name) in schedule" :key="name">
         <v-expansion-panel-header :ref="name">
           <h2>{{ name }}</h2>
         </v-expansion-panel-header>
@@ -25,10 +25,12 @@
 
 <script>
 import Vue from "vue";
+import schedule from '../mockdata/schedule.js';
 
 export default {
   name: "ScheduleTab",
   mounted() {
+    this.schedule = schedule;
     let date = new Date().toLocaleDateString();
     console.log(date);
     switch (date) {
@@ -41,11 +43,8 @@ export default {
       case "11/10/2019":
         this.$refs.Sunday[0].$el.click();
         break;
-      case "9/10/2019":
-        this.$refs.Sunday[0].$el.click();
-        break;
       default:
-        // this.$refs.Friday[0].$el.click();
+        this.$refs.Sunday[0].$el.click();
         break;
     }
   },
@@ -54,144 +53,145 @@ export default {
       isFridayOpen: false,
       isSaturdayOpen: false,
       isSundayOpen: false,
-      days: {
-        Friday: [
-          {
-            time: "5:00 PM",
-            title: "Check-in Begins",
-            location: "Main Hallway"
-          },
-          {
-            time: "6:00 PM",
-            title: "Opening Ceremony",
-            location: "Geological Sciences or Naka Auditorium"
-          },
-          {
-            time: "6:30 PM",
-            title: "Dinner",
-            location: "Lafferre Time Capsule"
-          },
-          {
-            time: "7:30 PM",
-            title: "Team Building",
-            location: "Room W1004"
-          },
-          {
-            time: "8:00 PM",
-            title: "Scavenger Hunt",
-            location: "Lafferre"
-          },
-          {
-            time: "9:00 PM",
-            title: "Tech Talk",
-            location: "Ketcham or Room E1419"
-          },
-          {
-            time: "11:00 PM",
-            title: "Laser Tag / Nerf War",
-            location: "The Quad"
-          }
-        ],
-        Saturday: [
-          {
-            time: "12:00 AM",
-            title: "Midnight Snack",
-            location: "Time Capsule"
-          },
-          {
-            time: "8:00 AM",
-            title: "Breakfast",
-            location: "Time Capsule"
-          },
-          {
-            time: "10:00 AM",
-            title: "Animals",
-            location: "Francis Quadrangle"
-          },
-          {
-            time: "12:00 PM",
-            title: "Lunch",
-            location: "Time Capsule"
-          },
-          {
-            time: "1:00 PM",
-            title: "Tech Talk",
-            location: "Ketcham or Room E1419"
-          },
-          {
-            time: "2:00 PM",
-            title: "Video Games",
-            location: "TBD"
-          },
-          {
-            time: "5:00 PM",
-            title: "Tech Talk",
-            location: "Ketcham or Room E1419"
-          },
-          {
-            time: "7:00 PM",
-            title: "Dinner",
-            location: "Time Capsule"
-          },
-          {
-            time: "8:00 PM",
-            title: "MLH Activity",
-            location: "TBD"
-          },
-          {
-            time: "9:00 PM",
-            title: "Beat Shazam",
-            location: "Classroom"
-          },
-          {
-            time: "9:00 PM",
-            title: "Crafts",
-            location: "Cafe or Classroom"
-          },
-          {
-            time: "10:00 PM",
-            title: "Movies",
-            location: "Ketcham"
-          }
-        ],
-        Sunday: [
-          {
-            time: "12:00 AM",
-            title: "Midnight Snack",
-            location: "Time Capsule"
-          },
-          {
-            time: "8:00 AM",
-            title: "Breakfast",
-            location: "Time Capsule"
-          },
-          {
-            time: "10:30 AM",
-            title: "Submissions Due",
-            location: ""
-          },
-          {
-            time: "11:00 AM",
-            title: "Lunch",
-            location: "Time Capsule"
-          },
-          {
-            time: "11:30 AM",
-            title: "How To Demo",
-            location: "Ketcham or Room E1419"
-          },
-          {
-            time: "12:00 PM",
-            title: "Judging Begins",
-            location: "Hallways"
-          },
-          {
-            time: "2:00 PM",
-            title: "Closing Ceremony",
-            location: "Keller or Naka"
-          }
-        ]
-      }
+      schedule: {}
+      // schedule: {
+      //   Friday: [
+      //     {
+      //       time: "5:00 PM",
+      //       title: "Check-in Begins",
+      //       location: "Main Hallway"
+      //     },
+      //     {
+      //       time: "6:00 PM",
+      //       title: "Opening Ceremony",
+      //       location: "Geological Sciences or Naka Auditorium"
+      //     },
+      //     {
+      //       time: "6:30 PM",
+      //       title: "Dinner",
+      //       location: "Lafferre Time Capsule"
+      //     },
+      //     {
+      //       time: "7:30 PM",
+      //       title: "Team Building",
+      //       location: "Room W1004"
+      //     },
+      //     {
+      //       time: "8:00 PM",
+      //       title: "Scavenger Hunt",
+      //       location: "Lafferre"
+      //     },
+      //     {
+      //       time: "9:00 PM",
+      //       title: "Tech Talk",
+      //       location: "Ketcham or Room E1419"
+      //     },
+      //     {
+      //       time: "11:00 PM",
+      //       title: "Laser Tag / Nerf War",
+      //       location: "The Quad"
+      //     }
+      //   ],
+      //   Saturday: [
+      //     {
+      //       time: "12:00 AM",
+      //       title: "Midnight Snack",
+      //       location: "Time Capsule"
+      //     },
+      //     {
+      //       time: "8:00 AM",
+      //       title: "Breakfast",
+      //       location: "Time Capsule"
+      //     },
+      //     {
+      //       time: "10:00 AM",
+      //       title: "Animals",
+      //       location: "Francis Quadrangle"
+      //     },
+      //     {
+      //       time: "12:00 PM",
+      //       title: "Lunch",
+      //       location: "Time Capsule"
+      //     },
+      //     {
+      //       time: "1:00 PM",
+      //       title: "Tech Talk",
+      //       location: "Ketcham or Room E1419"
+      //     },
+      //     {
+      //       time: "2:00 PM",
+      //       title: "Video Games",
+      //       location: "TBD"
+      //     },
+      //     {
+      //       time: "5:00 PM",
+      //       title: "Tech Talk",
+      //       location: "Ketcham or Room E1419"
+      //     },
+      //     {
+      //       time: "7:00 PM",
+      //       title: "Dinner",
+      //       location: "Time Capsule"
+      //     },
+      //     {
+      //       time: "8:00 PM",
+      //       title: "MLH Activity",
+      //       location: "TBD"
+      //     },
+      //     {
+      //       time: "9:00 PM",
+      //       title: "Beat Shazam",
+      //       location: "Classroom"
+      //     },
+      //     {
+      //       time: "9:00 PM",
+      //       title: "Crafts",
+      //       location: "Cafe or Classroom"
+      //     },
+      //     {
+      //       time: "10:00 PM",
+      //       title: "Movies",
+      //       location: "Ketcham"
+      //     }
+      //   ],
+      //   Sunday: [
+      //     {
+      //       time: "12:00 AM",
+      //       title: "Midnight Snack",
+      //       location: "Time Capsule"
+      //     },
+      //     {
+      //       time: "8:00 AM",
+      //       title: "Breakfast",
+      //       location: "Time Capsule"
+      //     },
+      //     {
+      //       time: "10:30 AM",
+      //       title: "Submissions Due",
+      //       location: ""
+      //     },
+      //     {
+      //       time: "11:00 AM",
+      //       title: "Lunch",
+      //       location: "Time Capsule"
+      //     },
+      //     {
+      //       time: "11:30 AM",
+      //       title: "How To Demo",
+      //       location: "Ketcham or Room E1419"
+      //     },
+      //     {
+      //       time: "12:00 PM",
+      //       title: "Judging Begins",
+      //       location: "Hallways"
+      //     },
+      //     {
+      //       time: "2:00 PM",
+      //       title: "Closing Ceremony",
+      //       location: "Keller or Naka"
+      //     }
+      //   ]
+      // }
     };
   }
 };

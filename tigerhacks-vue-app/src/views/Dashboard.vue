@@ -13,7 +13,7 @@
     </transition>
 
     <transition name="from-right">
-      <bottom-navbar v-if="isDashboardOpen"></bottom-navbar>
+      <bottom-navbar v-if="isDashboardOpen" @switchTheme="switchTheme()"></bottom-navbar>
     </transition>
 
     <v-btn @click="openDashboard()" class="palette-button" v-if="!isDashboardOpen">
@@ -22,7 +22,9 @@
 
     <transition name="from-bottom">
       <div class="viewport" v-if="isDashboardOpen">
-        <router-view></router-view>
+        <transition name="tab-slide" mode="out-in">
+          <router-view></router-view>
+        </transition>
       </div>
     </transition>
   </div>
@@ -52,8 +54,11 @@ export default {
     },
     closeDashboard() {
       this.isDashboardOpen = false;
+    }, 
+    switchTheme() {
+      this.$emit('switchTheme');
     }
-  }, 
+  },
   mounted() {
     // fetch('https://tigerhacks.com/api/schedule')
     //   .then(res => res.json())
@@ -93,7 +98,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .7s ease;
+  transition: opacity 0.7s ease;
 }
 
 .fade-enter,
@@ -106,8 +111,9 @@ export default {
   opacity: 1;
 }
 
-.from-left-enter-active, .from-right-enter-active {
-  transition: transform .7s ease;
+.from-left-enter-active,
+.from-right-enter-active {
+  transition: transform 0.7s ease;
 }
 
 .from-left-enter {
@@ -118,12 +124,13 @@ export default {
   transform: translateX(100vw);
 }
 
-.from-left-enter-to, .from-right-enter-to {
+.from-left-enter-to,
+.from-right-enter-to {
   transform: translateX(0px);
 }
 
 .from-bottom-enter-active {
-  transition: transform .7s ease .7s;
+  transition: transform 0.7s ease 0.7s;
 }
 
 .from-bottom-enter {
@@ -132,6 +139,24 @@ export default {
 
 .from-bottom-enter-to {
   transform: translateY(0);
+}
+
+.tab-slide-enter-active, .tab-slide-leave-active {
+  transition: transform .15s ease-out, opacity .15s ease;
+}
+
+.tab-slide-enter, .tab-slide-leave-to {
+  transform: translateY(1vh);
+  opacity: 0;
+}
+
+.tab-slide-enter-to, .tab-slide-leave {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.tab-slide-leave-to {
+  transform: translateY(1vh);
 }
 
 .viewport {
