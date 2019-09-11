@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Dashboard from './views/Dashboard.vue';
 import ScheduleTab from './views/ScheduleTab.vue';
 import SponsorsTab from './views/SponsorsTab.vue';
+import PrizesTab from './views/PrizesTab.vue';
+import AboutTab from './views/AboutTab.vue';
 Vue.use(Router)
 
 export default new Router({
@@ -21,6 +23,16 @@ export default new Router({
           path: 'sponsors', 
           name: 'sponsors', 
           component: SponsorsTab
+        }, 
+        {
+          path: 'prizes', 
+          name: 'prizes', 
+          component: PrizesTab
+        }, 
+        {
+          path: 'about', 
+          name: 'about', 
+          component: AboutTab
         }
       ]
     }
