@@ -1,22 +1,64 @@
 <template>
   <div class="sponsors-tab">
     <h1>Sponsors</h1>
-    <v-card class="sponsor-section" v-for="(value, name) in sponsors" :key="name">
-      <h2>{{ name }}</h2>
-      <v-card
-        v-for="sponsor in value"
-        :key="sponsor.name"
-        class="sponsor-card"
-        width="76%"
-        max-width="600px"
-        elevation="10"
-      >
-        <img :src="sponsor.image" alt="sponsor-image" class="sponsor-image" width="100%" />
-        <v-divider></v-divider>
-        <v-card-title>{{ sponsor.name }}</v-card-title>
-        <v-card-text>{{ sponsor.description }}</v-card-text>
+
+    <v-dialog v-model="dialog" width="600px">
+      <template v-slot:activator="{ on }">
+        <v-card class="sponsor-section" v-for="(value, name) in sponsors" :key="name">
+          <h2>{{ name }}</h2>
+          <v-card
+            v-for="sponsor in value"
+            :key="sponsor.name"
+            class="sponsor-card"
+            width="76%"
+            max-width="600px"
+            elevation="10"
+            @click="openSponsor(sponsor)"
+            v-on="on"
+          >
+            <img :src="sponsor.image" alt="sponsor-image" class="sponsor-image" width="100%" />
+            <v-divider></v-divider>
+            <v-card-title>{{ sponsor.name }}</v-card-title>
+            <!-- <v-card-text>{{ sponsor.description }}</v-card-text> -->
+          </v-card>
+        </v-card>
+      </template>
+      <v-card>
+        <img :src="selected.image" alt="sponsor-image" class="sponsor-image" width="100%" />
+        <v-card-title>
+          <h3>{{ selected.name }}</h3>
+        </v-card-title>
+        <v-card-text>{{ selected.description }}</v-card-text>
+        <v-card-actions>
+          <div class="flex-grow-1"></div>
+          <v-btn color="green darken-1" text @click="dialog = false">Agree</v-btn>
+        </v-card-actions>
       </v-card>
-    </v-card>
+    </v-dialog>
+
+    <!-- <v-card class="sponsor-section" v-for="(value, name) in sponsors" :key="name">
+      <h2>{{ name }}</h2>
+      <v-dialog v-model="dialog" width="600px" v-for="sponsor in value" :key="sponsor.name">
+        <template v-slot:activator="{ on }">
+          <v-card class="sponsor-card" width="76%" max-width="600px" elevation="10" v-on="on">
+            <img :src="sponsor.image" alt="sponsor-image" class="sponsor-image" width="100%" />
+            <v-divider></v-divider>
+            <v-card-title>{{ sponsor.name }}</v-card-title>
+            <v-card-text>{{ sponsor.description }}</v-card-text>
+          </v-card>
+        </template>
+        <v-card height="60vh">
+          <v-card-title>
+            <h3>{{ sponsor.name }}</h3>
+          </v-card-title>
+          <v-card-text>{{ sponsor.description }}</v-card-text>
+          <v-card-actions>
+            <div class="flex-grow-1"></div>
+            <v-btn color="green darken-1" text @click="dialog = false">Agree</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-card>-->
   </div>
 </template>
 
@@ -27,12 +69,20 @@ export default {
   name: "SponsorsTab",
   data() {
     return {
+      dialog: false,
       sponsors: {
+        Platinum: [],
         Gold: [],
         Silver: [],
         Bronze: []
-      }
+      },
+      selected: {}
     };
+  },
+  methods: {
+    openSponsor(sponsor) {
+      this.selected = sponsor;
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -45,9 +95,12 @@ export default {
       this.sponsors.Bronze = mockSponsors.sponsors.filter(
         sponsor => sponsor.level === "Bronze"
       );
-      console.log('MOCKSPONSORS');
+      this.sponsors.Platinum = mockSponsors.sponsors.filter(
+        sponsor => sponsor.level === "Platinum"
+      );
+      console.log("MOCKSPONSORS");
       console.log(mockSponsors);
-      console.log('SPONSORS');
+      console.log("SPONSORS");
       console.log(this.sponsors);
     });
   }
@@ -58,9 +111,10 @@ export default {
 .sponsor-section {
   margin-top: 40px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   background-color: white;
+  box-shadow: 0 0 20px 0 grey inset;
 }
 
 .sponsors-tab {
@@ -75,7 +129,7 @@ export default {
   max-width: 600px;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  transition: width .4s ease;
+  transition: width 0.4s ease;
 }
 
 .sponsor-card:hover {

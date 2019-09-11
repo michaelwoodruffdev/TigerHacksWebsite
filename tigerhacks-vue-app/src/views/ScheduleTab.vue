@@ -1,8 +1,8 @@
 <template>
   <div class="schedule-tab">
     <h1>Schedule</h1>
-    <v-expansion-panels popout>
-      <v-expansion-panel v-for="(value, name) in schedule" :key="name">
+    <v-expansion-panels popout class="expansion-panels">
+      <v-expansion-panel v-for="(value, name) in schedule" :key="name" class="expansion-panel">
         <v-expansion-panel-header :ref="name">
           <h2>{{ name }}</h2>
         </v-expansion-panel-header>
@@ -254,5 +254,9 @@ h3 {
   top: 8px;
   opacity: 0;
   transition: opacity 0.2s ease;
+}
+
+.expansion-panel {
+  box-shadow: 0 0 10px 0 grey inset;
 }
 </style>
