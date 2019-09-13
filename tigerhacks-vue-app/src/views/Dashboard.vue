@@ -21,11 +21,16 @@
     </v-btn>
 
     <transition name="from-bottom">
-      <div class="viewport" v-if="isDashboardOpen">
-        <transition name="tab-slide" mode="out-in">
-          <router-view></router-view>
-        </transition>
-      </div>
+      <!-- <v-parallax
+        src="https://www.bestfunforall.com/better/imgs/Gorgeous%20Lavender%20Field%20wallpaper%20%205.jpg"
+        height="500" class="viewport" v-if="isDashboardOpen"
+      > -->
+        <div v-if="isDashboardOpen" class="viewport">
+          <transition name="tab-slide" mode="out-in">
+            <router-view></router-view>
+          </transition>
+        </div>
+      <!-- </v-parallax> -->
     </transition>
   </div>
 </template>
@@ -54,9 +59,9 @@ export default {
     },
     closeDashboard() {
       this.isDashboardOpen = false;
-    }, 
+    },
     switchTheme() {
-      this.$emit('switchTheme');
+      this.$emit("switchTheme");
     }
   },
   mounted() {
@@ -141,16 +146,19 @@ export default {
   transform: translateY(0);
 }
 
-.tab-slide-enter-active, .tab-slide-leave-active {
-  transition: transform .15s ease-out, opacity .15s ease;
+.tab-slide-enter-active,
+.tab-slide-leave-active {
+  transition: transform 0.15s ease-out, opacity 0.15s ease;
 }
 
-.tab-slide-enter, .tab-slide-leave-to {
+.tab-slide-enter,
+.tab-slide-leave-to {
   transform: translateY(1vh);
   opacity: 0;
 }
 
-.tab-slide-enter-to, .tab-slide-leave {
+.tab-slide-enter-to,
+.tab-slide-leave {
   transform: translateX(0);
   opacity: 1;
 }

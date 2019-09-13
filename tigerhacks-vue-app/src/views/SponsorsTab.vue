@@ -142,10 +142,10 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Josefin Sans";
 }
 
 h1 {
-  align-self: flex-start;
   font-size: 100px;
 }
 

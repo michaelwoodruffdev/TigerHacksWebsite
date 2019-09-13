@@ -1,7 +1,7 @@
 <template>
   <div class="schedule-tab">
     <h1>Schedule</h1>
-    <v-expansion-panels popout class="expansion-panels">
+    <v-expansion-panels popout class="expansion-panels" width="95vw" max-width="680px">
       <v-expansion-panel v-for="(value, name) in schedule" :key="name" class="expansion-panel">
         <v-expansion-panel-header :ref="name">
           <h2>{{ name }}</h2>
@@ -30,23 +30,33 @@ import schedule from '../mockdata/schedule.js';
 export default {
   name: "ScheduleTab",
   mounted() {
-    this.schedule = schedule;
-    let date = new Date().toLocaleDateString();
-    console.log(date);
-    switch (date) {
-      case "11/8/2019":
-        this.$refs.Friday[0].$el.click();
-        break;
-      case "11/9/2019":
-        this.$refs.Saturday[0].$el.click();
-        break;
-      case "11/10/2019":
-        this.$refs.Sunday[0].$el.click();
-        break;
-      default:
-        this.$refs.Sunday[0].$el.click();
-        break;
-    }
+    this.$nextTick(() => {
+      this.schedule = schedule;
+      let date = new Date().toLocaleDateString();
+      console.log(date);
+      console.log('Schedule');
+      console.log(this.schedule);
+      console.log('Day Refs');
+      console.log(this.$refs);
+      console.log(this.$refs[0]);
+      console.log(this.$refs.Saturday);
+      console.log(this.$refs.Sunday);
+
+      switch (date) {
+        case "11/8/2019":
+          this.$refs.Friday[0].$el.click();
+          break;
+        case "11/9/2019":
+          this.$refs.Saturday[0].$el.click();
+          break;
+        case "11/10/2019":
+          this.$refs.Sunday[0].$el.click();
+          break;
+        default:
+          this.$refs.Sunday[0].$el.click();
+          break;
+      }
+    });
   },
   data() {
     return {
@@ -200,6 +210,12 @@ export default {
 <style scoped>
 .schedule-tab {
   padding: 20px 0vw;
+  width: 95vw;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
 
 h1,
