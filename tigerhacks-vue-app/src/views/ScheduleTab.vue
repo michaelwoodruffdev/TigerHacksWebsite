@@ -12,9 +12,9 @@
             <h4>{{ event.time }}</h4>
             <h3>{{ event.title }}</h3>
             <h5>@ {{ event.location }}</h5>
-            <v-btn class="favorite-button" small fab>
+            <!-- <v-btn class="favorite-button" small fab>
               <v-icon>mdi-star</v-icon>
-            </v-btn>
+            </v-btn> -->
           </div>
         </v-card-text>
       </v-card>

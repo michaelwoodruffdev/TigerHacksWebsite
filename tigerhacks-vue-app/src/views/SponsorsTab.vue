@@ -155,11 +155,12 @@ h1 {
   max-width: 600px;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  transition: width 0.4s ease;
+  transition: width 0.4s ease, background-color .4s ease;
 }
 
 .sponsor-card:hover {
-  width: 80% !important;
+  /* width: 80% !important; */
+  background-color: #99999922;
   cursor: pointer;
 }
 
