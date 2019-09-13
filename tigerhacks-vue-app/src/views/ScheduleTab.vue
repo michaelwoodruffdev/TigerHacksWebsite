@@ -1,13 +1,13 @@
 <template>
   <div class="schedule-tab">
     <h1>Schedule</h1>
-    <v-expansion-panels popout class="expansion-panels" width="95vw" max-width="680px">
-      <v-expansion-panel v-for="(value, name) in schedule" :key="name" class="expansion-panel">
-        <v-expansion-panel-header :ref="name">
+    <!-- <v-expansion-panels popout class="expansion-panels" width="95vw" max-width="680px"> -->
+    <div class="days">
+      <v-card v-for="(value, name) in schedule" :key="name" class="expansion-panel">
+        <v-card-title :ref="name">
           <h2>{{ name }}</h2>
-        </v-expansion-panel-header>
-        <!-- <transition-group name="padding"> -->
-        <v-expansion-panel-content>
+        </v-card-title>
+        <v-card-text>
           <div class="event-content" v-for="event in value" :key="event.title">
             <h4>{{ event.time }}</h4>
             <h3>{{ event.title }}</h3>
@@ -16,16 +16,16 @@
               <v-icon>mdi-star</v-icon>
             </v-btn>
           </div>
-        </v-expansion-panel-content>
-        <!-- </transition-group> -->
-      </v-expansion-panel>
-    </v-expansion-panels>
+        </v-card-text>
+      </v-card>
+    </div>
+    <!-- </v-expansion-panels> -->
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import schedule from '../mockdata/schedule.js';
+import schedule from "../mockdata/schedule.js";
 
 export default {
   name: "ScheduleTab",
@@ -34,9 +34,9 @@ export default {
       this.schedule = schedule;
       let date = new Date().toLocaleDateString();
       console.log(date);
-      console.log('Schedule');
+      console.log("Schedule");
       console.log(this.schedule);
-      console.log('Day Refs');
+      console.log("Day Refs");
       console.log(this.$refs);
       console.log(this.$refs[0]);
       console.log(this.$refs.Saturday);
@@ -208,19 +208,26 @@ export default {
 </script>
 
 <style scoped>
-.schedule-tab {
-  padding: 20px 0vw;
-  width: 95vw;
-  max-width: 680px;
+.days {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
+.schedule-tab {
+  width: 100%;
   margin: auto;
+  font-family: "Josefin Sans";
 }
 
 h1,
 h2 {
   /* text-shadow: 2px 2px black; */
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
 }
 
 h3 {
@@ -274,5 +281,20 @@ h3 {
 
 .expansion-panel {
   box-shadow: 0 0 10px 0 grey inset;
+  width: 30%;
+  margin-top: 50px;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+@media only screen and (max-width: 1000px) {
+    .days {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .expansion-panel {
+      width: 80%;
+    }
 }
 </style>
