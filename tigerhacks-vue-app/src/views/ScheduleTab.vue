@@ -1,6 +1,7 @@
 <template>
   <div class="schedule-tab">
-    <h1>Schedule</h1>
+    <heading text="Schedule"></heading>
+
     <!-- <v-expansion-panels popout class="expansion-panels" width="95vw" max-width="680px"> -->
     <div class="days">
       <v-card v-for="(value, name) in schedule" :key="name" class="expansion-panel">
@@ -14,7 +15,7 @@
             <h5>@ {{ event.location }}</h5>
             <!-- <v-btn class="favorite-button" small fab>
               <v-icon>mdi-star</v-icon>
-            </v-btn> -->
+            </v-btn>-->
           </div>
         </v-card-text>
       </v-card>
@@ -26,9 +27,13 @@
 <script>
 import Vue from "vue";
 import schedule from "../mockdata/schedule.js";
+import Heading from '../components/Heading.vue';
 
 export default {
   name: "ScheduleTab",
+  components: {
+    Heading
+  }, 
   mounted() {
     this.$nextTick(() => {
       this.schedule = schedule;
@@ -282,19 +287,18 @@ h3 {
 .expansion-panel {
   box-shadow: 0 0 10px 0 grey inset;
   width: 30%;
-  margin-top: 50px;
   margin-left: 2vw;
   margin-right: 2vw;
 }
 
 @media only screen and (max-width: 1000px) {
-    .days {
-      flex-direction: column;
-      align-items: center;
-    }
+  .days {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .expansion-panel {
-      width: 80%;
-    }
+  .expansion-panel {
+    width: 80%;
+  }
 }
 </style>

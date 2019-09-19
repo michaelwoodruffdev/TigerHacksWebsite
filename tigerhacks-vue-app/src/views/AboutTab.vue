@@ -1,6 +1,7 @@
 <template>
   <div class="about-tab">
-      <h1>About    <span>Tiger</span>Hacks</h1>
+      <!-- <h1>About    <span>Tiger</span>Hacks</h1> -->
+      <heading text="About TigerHacks"></heading>
     <v-card class="about-section" width="90vw" max-width="680px">
       <h2>What is TigerHacks?</h2>
       <v-divider></v-divider>
@@ -20,11 +21,16 @@
 </template>
 
 <script>
+import Heading from '../components/Heading.vue';
+
 export default {
   name: "AboutTab",
   data() {
     return {};
   },
+  components: {
+    Heading
+  }, 
   methods: {},
   mounted() {}
 };

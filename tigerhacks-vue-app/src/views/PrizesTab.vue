@@ -1,12 +1,17 @@
 <template>
   <div class="prizes-tab">
-    <h1>Prizes</h1>
+      <heading text="Prizes"></heading>    
   </div>
 </template>
 
 <script>
+import Heading from '../components/Heading.vue'
+
 export default {
   name: "PrizesTab",
+  components: {
+    Heading
+  }, 
   data() {
     return {};
   },

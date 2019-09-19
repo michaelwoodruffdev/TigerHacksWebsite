@@ -1,6 +1,7 @@
 <template>
   <div class="sponsors-tab">
-    <h1>Sponsors</h1>
+    <heading text="Sponsors"></heading>
+
 
     <v-dialog v-model="dialog" width="600px">
       <template v-slot:activator="{ on }">
@@ -84,9 +85,13 @@
 
 <script>
 import mockSponsors from "../mockdata/sponsors";
+import Heading from '../components/Heading.vue';
 
 export default {
   name: "SponsorsTab",
+  components: {
+    Heading
+  }, 
   data() {
     return {
       dialog: false,
@@ -143,6 +148,7 @@ export default {
   flex-direction: column;
   align-items: center;
   font-family: "Josefin Sans";
+  width: 100%;
 }
 
 h1 {

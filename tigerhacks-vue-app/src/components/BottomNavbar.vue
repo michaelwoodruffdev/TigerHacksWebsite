@@ -43,21 +43,21 @@ export default {
           icon: "mdi-trophy",
           title: "Prizes"
         },
-        {
-          link: 'tigertalks', 
-          icon: "mdi-chat",
-          title: "TigerTalks"
-        },
+        // {
+        //   link: 'tigertalks', 
+        //   icon: "mdi-chat",
+        //   title: "TigerTalks"
+        // },
         {
           link: 'sponsors', 
           icon: "mdi-star",
           title: "Sponsors"
         },
-        {
-          link: 'profile', 
-          icon: "mdi-account",
-          title: "Profile"
-        }
+        // {
+        //   link: 'profile', 
+        //   icon: "mdi-account",
+        //   title: "Profile"
+        // }
       ]
     };
   }
@@ -76,7 +76,7 @@ export default {
 }
 
 .theme-button {
-  position: absolute;
+  position: absolute !important;
   right: 0;
   top: 0;
 }

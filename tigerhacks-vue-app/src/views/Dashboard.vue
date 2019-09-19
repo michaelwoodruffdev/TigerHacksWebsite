@@ -26,6 +26,7 @@
         height="500" class="viewport" v-if="isDashboardOpen"
       > -->
         <div v-if="isDashboardOpen" class="viewport">
+          <img src="../assets/THBubbleBackground.png" alt="" class="background-image" ref="backgroundImage">
           <transition name="tab-slide" mode="out-in">
             <router-view></router-view>
           </transition>
@@ -65,11 +66,24 @@ export default {
     }
   },
   mounted() {
+    console.log(this.$route.path);
+    if (this.$route.path !== '/')
+      this.isDashboardOpen = true;
     // fetch('https://tigerhacks.com/api/schedule')
     //   .then(res => res.json())
     //   .then(res => {
     //     console.log(res);
     //   });
+    window.onmousemove = (e) => {
+      let xCoord = e.clientX / window.innerWidth;
+      let yCoord = e.clientY / window.innerHeight;
+      let xOffset = xCoord * 10;
+      let yOffset = yCoord * 10;
+      console.log(xOffset);
+
+      this.$refs.backgroundImage.style.left = -xCoord - 10 + "vw";
+      this.$refs.backgroundImage.style.top = -yCoord - 10 + "vh";
+    }
   }
 };
 </script>
@@ -170,9 +184,23 @@ export default {
 .viewport {
   padding: 40px 80px;
   background-color: #22222266;
+  /* background-image: url('../assets/THBubbleBackground.png'); */
+  background-size: 100%;
   position: relative;
   z-index: 2;
   height: 90vh;
   overflow: scroll;
 }
+
+.background-image {
+  position: fixed;
+  left: -10vw;
+  top: -10vh;
+  width: 130vw;
+  min-width: 220vh;
+  height: 130vh;
+  pointer-events: none;
+
+}
+
 </style>
