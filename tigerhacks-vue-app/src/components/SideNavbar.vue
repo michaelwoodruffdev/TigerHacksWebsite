@@ -23,6 +23,13 @@
       <v-btn class="navbar-button" tile width="40px" @click="toggleIsNavBarOpen()">
         <v-icon ref="navButton">mdi-menu</v-icon>
       </v-btn>
+
+      <v-btn
+        color="#f79845"
+        class="register-btn"
+        height="30"
+        @click="window.location.replace('https://tigerhacks.firebaseapp.com/signin')"
+      >Register</v-btn>
     </v-navigation-drawer>
   </div>
 </template>
@@ -36,18 +43,18 @@ export default {
       links: [
         {
           icon: "mdi-help",
-          text: "About", 
-          link: 'about'
+          text: "About",
+          link: "about"
         },
         {
           icon: "mdi-calendar",
-          text: "Schedule", 
-          link: 'schedule'
+          text: "Schedule",
+          link: "schedule"
         },
         {
           icon: "mdi-trophy",
-          text: "Prizes", 
-          link: 'prizes'
+          text: "Prizes",
+          link: "prizes"
         },
         // {
         //   icon: "mdi-chat",
@@ -55,9 +62,9 @@ export default {
         // },
         {
           icon: "mdi-star",
-          text: "Sponsors", 
-          link: 'sponsors'
-        },
+          text: "Sponsors",
+          link: "sponsors"
+        }
         // {
         //   icon: "mdi-account",
         //   text: "Profile"
@@ -86,5 +93,12 @@ export default {
   position: absolute;
   top: 0;
   right: -64px;
+}
+
+.register-btn {
+  height: 2rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 </style>

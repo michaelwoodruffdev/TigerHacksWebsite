@@ -10,19 +10,19 @@
         November 8-10 2019
     </v-card-title>
 
-    <v-btn :large="true" color="#f79845" class="mt-6" height="60">Register / Sign in</v-btn>
+    <v-btn :large="true" color="#f79845" class="mt-6" height="60" @click="window.location.replace('https://tigerhacks.firebaseapp.com/signin')">Register</v-btn>
 
     <v-card-actions class="justify-center link-row mt-3">
-      <v-btn>
+      <v-btn @click="window.location.replace('mailto:muengrtigerhacks@missouri.edu')">
         <v-icon>mdi-email</v-icon>
       </v-btn>
-      <v-btn>
+      <v-btn @click="window.location.replace('https://twitter.com/tigerhackshd')">
         <v-icon>mdi-twitter</v-icon>
       </v-btn>
-      <v-btn>
+      <v-btn @click="window.location.replace('https://www.facebook.com/TigerHacks/')">
         <v-icon>mdi-facebook</v-icon>
       </v-btn>
-      <v-btn>
+      <v-btn @click="window.location.replace('https://www.instagram.com/tigerhacks/')">
         <v-icon>mdi-instagram</v-icon>
       </v-btn>
     </v-card-actions>

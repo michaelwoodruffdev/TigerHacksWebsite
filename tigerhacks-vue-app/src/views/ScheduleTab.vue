@@ -27,13 +27,13 @@
 <script>
 import Vue from "vue";
 import schedule from "../mockdata/schedule.js";
-import Heading from '../components/Heading.vue';
+import Heading from "../components/Heading.vue";
 
 export default {
   name: "ScheduleTab",
   components: {
     Heading
-  }, 
+  },
   mounted() {
     this.$nextTick(() => {
       this.schedule = schedule;
@@ -236,7 +236,7 @@ h1 {
 }
 
 h3 {
-  color: orange !important;
+  color: orange;  
 }
 
 .event-content {
@@ -299,6 +299,9 @@ h3 {
 
   .expansion-panel {
     width: 80%;
+    margin-top: 20px;
   }
+
+
 }
 </style>

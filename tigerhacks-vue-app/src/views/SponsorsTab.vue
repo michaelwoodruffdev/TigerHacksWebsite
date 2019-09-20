@@ -2,7 +2,6 @@
   <div class="sponsors-tab">
     <heading text="Sponsors"></heading>
 
-
     <v-dialog v-model="dialog" width="600px">
       <template v-slot:activator="{ on }">
         <v-card :class="'sponsor-section ' + key" v-for="key in sortedKeyList" :key="key">
@@ -23,75 +22,34 @@
             <v-card-text>{{ sponsor.description }}</v-card-text>
           </v-card>
         </v-card>
-
-        <!-- <v-card class="sponsor-section-display-none" v-for="(value, name) in sponsors" :key="name">
-          <h2>{{ name }}</h2>
-          <v-card
-            v-for="sponsor in value"
-            :key="sponsor.name"
-            class="sponsor-card"
-            width="76%"
-            max-width="600px"
-            elevation="10"
-            @click="openSponsor(sponsor)"
-            v-on="on"
-          >
-            <img :src="sponsor.image" alt="sponsor-image" class="sponsor-image" width="100%" />
-            <v-divider></v-divider>
-            <v-card-title>{{ sponsor.name }}</v-card-title>
-            <v-card-text>{{ sponsor.description }}</v-card-text>
-          </v-card>
-        </v-card>-->
       </template>
       <v-card>
+        <v-btn @click="window.location.replace(selected.website)" class="website-btn">Website</v-btn>
         <img :src="selected.image" alt="sponsor-image" class="sponsor-image" width="100%" />
         <v-card-title>
           <h3>{{ selected.name }}</h3>
         </v-card-title>
         <v-card-text>{{ selected.description }}</v-card-text>
-        
-        <v-card-actions>
-          <div class="flex-grow-1"></div>
-          <v-btn color="green darken-1" text @click="dialog = false">Agree</v-btn>
-        </v-card-actions>
+        <v-list v-if="loaded && selected.mentors.length > 0">
+          <h4>Mentors:</h4>
+          <v-list-item v-for="mentor in selected.mentors" :key="mentor.name">
+            <v-list-item-content> {{mentor.name}}: {{mentor.skills}}</v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-card>
     </v-dialog>
-
-    <!-- <v-card class="sponsor-section" v-for="(value, name) in sponsors" :key="name">
-      <h2>{{ name }}</h2>
-      <v-dialog v-model="dialog" width="600px" v-for="sponsor in value" :key="sponsor.name">
-        <template v-slot:activator="{ on }">
-          <v-card class="sponsor-card" width="76%" max-width="600px" elevation="10" v-on="on">
-            <img :src="sponsor.image" alt="sponsor-image" class="sponsor-image" width="100%" />
-            <v-divider></v-divider>
-            <v-card-title>{{ sponsor.name }}</v-card-title>
-            <v-card-text>{{ sponsor.description }}</v-card-text>
-          </v-card>
-        </template>
-        <v-card height="60vh">
-          <v-card-title>
-            <h3>{{ sponsor.name }}</h3>
-          </v-card-title>
-          <v-card-text>{{ sponsor.description }}</v-card-text>
-          <v-card-actions>
-            <div class="flex-grow-1"></div>
-            <v-btn color="green darken-1" text @click="dialog = false">Agree</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-card>-->
   </div>
 </template>
 
 <script>
 import mockSponsors from "../mockdata/sponsors";
-import Heading from '../components/Heading.vue';
+import Heading from "../components/Heading.vue";
 
 export default {
   name: "SponsorsTab",
   components: {
     Heading
-  }, 
+  },
   data() {
     return {
       dialog: false,
@@ -101,8 +59,9 @@ export default {
         Silver: [],
         Bronze: []
       },
-      sortedKeyList: ["Platinum", "Gold", "Silver", "Bronze"],
-      selected: {}
+      sortedKeyList: ["Bronze", "Silver", "Gold", "Platinum"],
+      selected: {}, 
+      loaded: false
     };
   },
   methods: {
@@ -128,6 +87,7 @@ export default {
       console.log(mockSponsors);
       console.log("SPONSORS");
       console.log(this.sponsors);
+      this.loaded = true;
     });
   }
 };
@@ -139,7 +99,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: #232323;
   box-shadow: 0 0 20px 0 grey inset;
 }
 
@@ -161,12 +121,13 @@ h1 {
   max-width: 600px;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  transition: width 0.4s ease, background-color .4s ease;
+  background-color: #343434;
+  transition: width 0.4s ease, background-color 0.4s ease;
 }
 
 .sponsor-card:hover {
   /* width: 80% !important; */
-  background-color: #99999922;
+  background-color: #434343;
   cursor: pointer;
 }
 
@@ -217,5 +178,20 @@ h2 {
     rgb(190, 190, 190),
     rgb(252, 252, 252)
   );
+}
+
+.v-list-item {
+  text-align: center;
+  padding-left: 3rem;
+}
+
+h4 {
+  padding-left: 2rem;
+}
+
+.website-btn {
+  position: absolute;
+  right: 3px;
+  top: 3px;
 }
 </style>

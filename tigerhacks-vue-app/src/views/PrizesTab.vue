@@ -1,6 +1,9 @@
 <template>
   <div class="prizes-tab">
       <heading text="Prizes"></heading>    
+      <v-card>
+        <v-card-title>Coming Soon</v-card-title>
+      </v-card>
   </div>
 </template>
 
@@ -23,4 +26,16 @@ export default {
 </script>
 
 <style scoped>
+.v-card {
+  width: 20vw;
+  min-width: 16rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.v-card-title {
+  
+}
 </style>

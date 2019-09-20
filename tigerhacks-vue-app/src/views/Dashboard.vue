@@ -5,7 +5,7 @@
     </a>
 
     <transition name="from-left">
-      <side-navbar v-if="isDashboardOpen"></side-navbar>
+      <side-navbar v-if="isDashboardOpen" class="side-nav"></side-navbar>
     </transition>
 
     <transition name="fade">
@@ -13,7 +13,7 @@
     </transition>
 
     <transition name="from-right">
-      <bottom-navbar v-if="isDashboardOpen" @switchTheme="switchTheme()"></bottom-navbar>
+      <bottom-navbar v-if="isDashboardOpen" @switchTheme="switchTheme()" class="bottom-nav"></bottom-navbar>
     </transition>
 
     <v-btn @click="openDashboard()" class="palette-button" v-if="!isDashboardOpen">
@@ -56,6 +56,7 @@ export default {
   },
   methods: {
     openDashboard() {
+      this.$router.push('/about');
       this.isDashboardOpen = true;
     },
     closeDashboard() {
@@ -66,7 +67,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.path);
     if (this.$route.path !== '/')
       this.isDashboardOpen = true;
     // fetch('https://tigerhacks.com/api/schedule')
@@ -79,7 +79,6 @@ export default {
       let yCoord = e.clientY / window.innerHeight;
       let xOffset = xCoord * 10;
       let yOffset = yCoord * 10;
-      console.log(xOffset);
 
       this.$refs.backgroundImage.style.left = -xCoord - 10 + "vw";
       this.$refs.backgroundImage.style.top = -yCoord - 10 + "vh";
@@ -182,7 +181,7 @@ export default {
 }
 
 .viewport {
-  padding: 40px 80px;
+  padding: 40px 2.5vw;
   background-color: #22222266;
   /* background-image: url('../assets/THBubbleBackground.png'); */
   background-size: 100%;
@@ -200,7 +199,28 @@ export default {
   min-width: 220vh;
   height: 130vh;
   pointer-events: none;
+}
 
+.side-nav {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .viewport {
+    height: 100vh;
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+
+  .side-nav {
+    display: initial;
+  }
+
+  .mlh-badge {
+    opacity: .4;
+  }
 }
 
 </style>

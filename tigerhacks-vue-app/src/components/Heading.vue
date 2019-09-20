@@ -28,8 +28,9 @@ export default {
     }
 
     .v-card h1 {
+        font-family: 'Roboto';
         font-size: 4rem !important;
         margin: 30px;
-        color: orange;
+        color: rgb(238, 87, 44);
     }
 </style>

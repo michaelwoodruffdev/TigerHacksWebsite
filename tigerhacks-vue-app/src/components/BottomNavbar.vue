@@ -5,10 +5,12 @@
         <span>{{ link.title }}</span>
         <v-icon>{{ link.icon }}</v-icon>
       </v-btn>
-      <v-btn @click="switchTheme()" fab class="theme-button">
+      <!-- <v-btn @click="switchTheme()" fab class="theme-button">
         <span>theme</span>
         <v-icon>mdi-lens</v-icon>
-      </v-btn>
+      </v-btn> -->
+    <v-btn color="#f79845" class="register-btn" height="60" @click="window.location.replace('https://tigerhacks.firebaseapp.com/signin')">Register</v-btn>
+
     </v-bottom-navigation>
   </div>
 </template>
@@ -79,5 +81,11 @@ export default {
   position: absolute !important;
   right: 0;
   top: 0;
+}
+
+.register-btn {
+  position: absolute !important;
+  left: 10px;
+  top: 10px;
 }
 </style>
