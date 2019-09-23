@@ -41,7 +41,7 @@ export default {
 
 .landing-card {
   margin: auto;
-  margin-top: 3vh;
+  /* margin-top: 3vh; */
   width: 80vw;
   max-width: 460px;
   padding: 30px;
@@ -55,9 +55,7 @@ export default {
 }
 
 .landing-card:hover {
-  bottom: 12px;
-  max-width: 470px;
-  width: 84vw;
+  
 }
 
 .landing-card:hover {

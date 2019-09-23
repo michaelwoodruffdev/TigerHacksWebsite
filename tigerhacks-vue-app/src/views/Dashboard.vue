@@ -4,6 +4,8 @@
       <img src="../assets/mlh-trust-badge-2020-gray.svg" alt class="mlh-badge" />
     </a>
 
+    <img src="../assets/background-img.jpg" alt="" class="background-img"/>
+
     <transition name="from-left">
       <side-navbar v-if="isDashboardOpen" class="side-nav"></side-navbar>
     </transition>
@@ -26,7 +28,7 @@
         height="500" class="viewport" v-if="isDashboardOpen"
       > -->
         <div v-if="isDashboardOpen" class="viewport">
-          <img src="../assets/THBubbleBackground.png" alt="" class="background-image" ref="backgroundImage">
+          <!-- <img src="../assets/THBubbleBackground.png" alt="" class="background-image" ref="backgroundImage"> -->
           <transition name="tab-slide" mode="out-in">
             <router-view></router-view>
           </transition>
@@ -66,6 +68,11 @@ export default {
       this.$emit("switchTheme");
     }
   },
+  created() {
+    // onVpScroll = (e) => {
+    //   console.log(e);
+    // }
+  }, 
   mounted() {
     if (this.$route.path !== '/')
       this.isDashboardOpen = true;
@@ -74,14 +81,15 @@ export default {
     //   .then(res => {
     //     console.log(res);
     //   });
-    window.onmousemove = (e) => {
-      let xCoord = e.clientX / window.innerWidth;
-      let yCoord = e.clientY / window.innerHeight;
-      let xOffset = xCoord * 10;
-      let yOffset = yCoord * 10;
 
-      this.$refs.backgroundImage.style.left = -xCoord - 10 + "vw";
-      this.$refs.backgroundImage.style.top = -yCoord - 10 + "vh";
+    window.onmousemove = (e) => {
+      // let xCoord = e.clientX / window.innerWidth;
+      // let yCoord = e.clientY / window.innerHeight;
+      // let xOffset = xCoord * 10;
+      // let yOffset = yCoord * 10;
+
+      // this.$refs.backgroundImage.style.left = -xCoord - 10 + "vw";
+      // this.$refs.backgroundImage.style.top = -yCoord - 10 + "vh";
     }
   }
 };
@@ -97,6 +105,10 @@ export default {
   background-image: url("../assets/background-img.jpg");
   background-repeat: repeat;
   background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .mlh-badge {
@@ -183,10 +195,11 @@ export default {
 
 .viewport {
   padding: 40px 2.5vw;
-  background-color: #22222266;
+  /* background-color: #22222266; */
   /* background-image: url('../assets/THBubbleBackground.png'); */
   background-size: 100%;
-  position: relative;
+  position: fixed;
+  top: 0;
   z-index: 2;
   height: 90vh;
   overflow: scroll;
@@ -200,6 +213,14 @@ export default {
   min-width: 220vh;
   height: 130vh;
   pointer-events: none;
+}
+
+.background-img {
+  position: fixed;
+  height: 150vh;
+  width: 120vw;
+  left: -5vw;
+  top: -5vh;
 }
 
 .side-nav {
@@ -220,7 +241,7 @@ export default {
   }
 
   .mlh-badge {
-    opacity: .4;
+    display: none;
   }
 }
 

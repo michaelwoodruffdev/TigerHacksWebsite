@@ -25,12 +25,14 @@ export default {
         width: 80vw;
         margin: auto;
         margin-bottom: 40px;
+        height: auto !important;
     }
 
     .v-card h1 {
         font-family: 'Roboto';
         font-size: 4rem !important;
         margin: 30px;
-        color: rgb(238, 87, 44);
+        color: rgb(247, 152, 69);
+        height: auto !important;
     }
 </style>

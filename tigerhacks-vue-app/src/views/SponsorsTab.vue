@@ -140,15 +140,18 @@ h1 {
 
 h2 {
   width: 100%;
-  background-color: red;
+  background-color: grey;
   font-size: 5rem;
   padding-left: 40px;
   /* text-decoration: underline; */
   font-weight: 400;
   box-shadow: 0 0 10px 0 #999999 inset;
+  height: 50px;
+  font-size: 2em;
+  padding-top: 5px;
 }
 
-.Platinum > h2 {
+/* .Platinum > h2 {
   background-image: linear-gradient(
     to bottom right,
     rgb(135, 196, 237),
@@ -178,7 +181,7 @@ h2 {
     rgb(190, 190, 190),
     rgb(252, 252, 252)
   );
-}
+} */
 
 .v-list-item {
   text-align: center;

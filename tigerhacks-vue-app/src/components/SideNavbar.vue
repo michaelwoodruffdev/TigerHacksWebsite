@@ -101,4 +101,5 @@ export default {
   top: 10px;
   right: 10px;
 }
+
 </style>

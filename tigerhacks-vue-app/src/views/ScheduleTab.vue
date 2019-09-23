@@ -298,7 +298,7 @@ h3 {
   }
 
   .expansion-panel {
-    width: 80%;
+    width: 85vw;
     margin-top: 20px;
   }
 

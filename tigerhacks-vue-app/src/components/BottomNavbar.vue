@@ -11,6 +11,7 @@
       </v-btn> -->
     <v-btn color="#f79845" class="register-btn" height="60" @click="window.location.replace('https://tigerhacks.firebaseapp.com/signin')">Register</v-btn>
 
+    
     </v-bottom-navigation>
   </div>
 </template>
