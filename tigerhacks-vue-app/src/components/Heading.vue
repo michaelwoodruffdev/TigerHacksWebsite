@@ -29,7 +29,7 @@ export default {
     }
 
     .v-card h1 {
-        font-family: 'Roboto';
+        font-family: 'outage' !important;
         font-size: 4rem !important;
         margin: 30px;
         color: rgb(247, 152, 69);

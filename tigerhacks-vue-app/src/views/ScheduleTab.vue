@@ -46,21 +46,6 @@ export default {
       console.log(this.$refs[0]);
       console.log(this.$refs.Saturday);
       console.log(this.$refs.Sunday);
-
-      switch (date) {
-        case "11/8/2019":
-          this.$refs.Friday[0].$el.click();
-          break;
-        case "11/9/2019":
-          this.$refs.Saturday[0].$el.click();
-          break;
-        case "11/10/2019":
-          this.$refs.Sunday[0].$el.click();
-          break;
-        default:
-          this.$refs.Sunday[0].$el.click();
-          break;
-      }
     });
   },
   data() {

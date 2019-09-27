@@ -96,6 +96,14 @@ export default {
 </script>
 
 <style>
+@font-face {
+    font-family: 'outage';
+    src: url('../assets/outage.ttf');
+}
+
+* {
+  font-family: 'outage' !important;
+}
 </style>
 
 <style scoped>
