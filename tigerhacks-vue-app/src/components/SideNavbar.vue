@@ -1,11 +1,18 @@
 <template>
   <div class="side-navbar">
     <v-navigation-drawer app v-model="isNavBarOpen" temporary class="navbar">
-      <v-list-item>
+      <!-- <v-list-item>
         <v-list-item-content>
           <v-list-item-title>TigerHacks</v-list-item-title>
         </v-list-item-content>
-      </v-list-item>
+      </v-list-item> -->
+      <v-btn
+        color="#f79845"
+        class="register-btn"
+        height="3rem"
+        width="90%"
+        @click="window.location.replace('https://tigerhacks.firebaseapp.com/signin')"
+      >Register</v-btn>
 
       <v-divider></v-divider>
 
@@ -24,12 +31,13 @@
         <v-icon ref="navButton">mdi-menu</v-icon>
       </v-btn>
 
-      <v-btn
+      <!-- <v-btn
         color="#f79845"
         class="register-btn"
-        height="30"
+        height="3rem"
+        width="90%"
         @click="window.location.replace('https://tigerhacks.firebaseapp.com/signin')"
-      >Register</v-btn>
+      >Register</v-btn> -->
     </v-navigation-drawer>
   </div>
 </template>
@@ -86,7 +94,7 @@ export default {
 <style scoped>
 .navbar {
   overflow: visible;
-  z-index: 3;
+  z-index: 10;
 }
 
 .navbar-button {
@@ -97,9 +105,10 @@ export default {
 
 .register-btn {
   height: 2rem;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  margin: 1rem 5%;
+  /* position: absolute; */
+  /* bottom: 10px; */
+  /* left: 10px; */
 }
 
 </style>

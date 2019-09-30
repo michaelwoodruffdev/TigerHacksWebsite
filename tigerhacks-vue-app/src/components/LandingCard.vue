@@ -2,9 +2,10 @@
   <v-card class="text-center landing-card">
     <img src="../assets/tiger_big.png" alt />
 
-    <v-card-title class="card-title justify-center">
+    <h1><p style="color: orange;">Tiger</p><p>Hacks</p></h1>
+    <!-- <v-card-title class="card-title justify-center">
       <span>Tiger</span>Hacks
-    </v-card-title>
+    </v-card-title> -->
 
     <v-card-title class="justify-center">
         November 8-10 2019
@@ -66,13 +67,20 @@ export default {
   width: 80%;
 }
 
-.card-title {
+h1 {
   font-size: 4rem;
   font-family: "Josefin Sans";
   text-align: center;
+  width: 100%;
 }
 
-.card-title > span {
-  color: orange;
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 4rem !important;
+  font-size: 4rem;
 }
+/* h1 > span {
+  color: orange;
+} */
 </style>

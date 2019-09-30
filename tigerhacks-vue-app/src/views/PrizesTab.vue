@@ -1,6 +1,6 @@
 <template>
   <div class="prizes-tab">
-      <heading text="Prizes"></heading>    
+      <!-- <heading text="Prizes"></heading>     -->
       <v-card>
         <v-card-title>Coming Soon</v-card-title>
       </v-card>

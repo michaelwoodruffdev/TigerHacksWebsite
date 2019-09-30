@@ -1,6 +1,6 @@
 <template>
   <div class="sponsors-tab">
-    <heading text="Sponsors"></heading>
+    <!-- <heading text="Sponsors"></heading> -->
 
     <v-dialog v-model="dialog" width="600px">
       <template v-slot:activator="{ on }">
@@ -30,7 +30,7 @@
           <h3>{{ selected.name }}</h3>
         </v-card-title>
         <v-card-text>{{ selected.description }}</v-card-text>
-        <v-list v-if="loaded && selected.mentors.length > 0">
+        <v-list v-if="loaded">
           <h4>Mentors:</h4>
           <v-list-item v-for="mentor in selected.mentors" :key="mentor.name">
             <v-list-item-content> {{mentor.name}}: {{mentor.skills}}</v-list-item-content>
@@ -68,7 +68,7 @@ export default {
     openSponsor(sponsor) {
       this.selected = sponsor;
     }
-  },
+  }, 
   mounted() {
     this.$nextTick(() => {
       this.sponsors.Gold = mockSponsors.sponsors.filter(
@@ -83,10 +83,10 @@ export default {
       this.sponsors.Platinum = mockSponsors.sponsors.filter(
         sponsor => sponsor.level === "Platinum"
       );
-      console.log("MOCKSPONSORS");
-      console.log(mockSponsors);
-      console.log("SPONSORS");
-      console.log(this.sponsors);
+      // console.log("MOCKSPONSORS");
+      // console.log(mockSponsors);
+      // console.log("SPONSORS");
+      // console.log(this.sponsors);
       this.loaded = true;
     });
   }

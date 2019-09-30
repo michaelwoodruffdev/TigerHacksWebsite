@@ -1,12 +1,12 @@
 <template>
   <div class="about-tab">
     <!-- <h1>About    <span>Tiger</span>Hacks</h1> -->
-    <heading text="About TigerHacks"></heading>
+    <!-- <heading text="About TigerHacks"></heading> -->
     <v-card
       tile
       class="about-section"
       v-for="qa in questionAnswers"
-      width="90vw"
+      width="100vw"
       max-width="680px"
       :key="qa.q"
       @click="qa.isOpen = !qa.isOpen"
@@ -96,6 +96,8 @@ export default {
   font-size: 20px;
   background-color: #232323;
   overflow: scroll;
+  font-family: 'Josefin Sans' !important;
+  font-weight: 100;
 }
 
 .about-section {

@@ -1,6 +1,6 @@
 <template>
   <div class="schedule-tab">
-    <heading text="Schedule"></heading>
+    <!-- <heading text="Schedule"></heading> -->
 
     <!-- <v-expansion-panels popout class="expansion-panels" width="95vw" max-width="680px"> -->
     <div class="days">
@@ -9,7 +9,7 @@
           <h2>{{ name }}</h2>
         </v-card-title>
         <v-card-text>
-          <div class="event-content" v-for="event in value" :key="event.title">
+          <div class="event-content" v-for="event in value" :key="event.title + event.time">
             <h4>{{ event.time }}</h4>
             <h3>{{ event.title }}</h3>
             <h5>@ {{ event.location }}</h5>
@@ -38,14 +38,16 @@ export default {
     this.$nextTick(() => {
       this.schedule = schedule;
       let date = new Date().toLocaleDateString();
-      console.log(date);
-      console.log("Schedule");
-      console.log(this.schedule);
-      console.log("Day Refs");
-      console.log(this.$refs);
-      console.log(this.$refs[0]);
-      console.log(this.$refs.Saturday);
-      console.log(this.$refs.Sunday);
+      // this.$refs.tab.onscroll = (e) => {
+      //   console.log("Hello Scroll");
+      // }
+      // console.log("Schedule");
+      // console.log(this.schedule);
+      // console.log("Day Refs");
+      // console.log(this.$refs);
+      // console.log(this.$refs[0]);
+      // console.log(this.$refs.Saturday);
+      // console.log(this.$refs.Sunday);
     });
   },
   data() {
